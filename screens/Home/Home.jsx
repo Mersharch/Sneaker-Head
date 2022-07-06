@@ -1,19 +1,40 @@
-import React, { useState }  from 'react';
+import React, { useEffect, useState }  from 'react';
 import { SafeAreaView, View, Text, FlatList,TouchableOpacity, Image, Button, ScrollView } from 'react-native'
 import { styles } from './HomeS'
 import { Feather } from '@expo/vector-icons';
 import Hero from '../../components/Hero/Hero';
-import { categories, Products } from '../../assets/data';
+import { categories} from '../../assets/data';
 import HomeCard from '../../components/Cards/HomeCard/HomeCard';
-
+import { db, docs, kollection } from "../../firebase";
 
 
 const Home = ({ navigation }) => {
 
   const [catIndex, setCatIndex] = useState(0);
+  const [products, setProducts] = useState([]);
+  
+  const [loader, setLoader] = useState(true);
+
+  const getProducts = () => {
+    const querySnapshot = docs(kollection(db, "Products"));
+      const items = []
+      querySnapshot.forEach((doc) => {
+      // doc.data() is never undefined for query doc snapshots
+      items.push(doc.data())
+    });
+
+    setProducts(items)
+    setLoader(false);
+  }
+
+  useEffect(() => {
+    getProducts();
+  },[])
+  
 
   return (
     <SafeAreaView style={styles.hContainer}>
+      {loader == true && <Text>Please wait...</Text>}
       <View style={styles.topIcons}>
         <TouchableOpacity>
           <Feather name="align-left" size={30} color="black" />
@@ -39,7 +60,7 @@ const Home = ({ navigation }) => {
                   <View style={{borderRadius:50,backgroundColor:'#eaD2DC', padding:3}}>
                     <Image
                     style={{width:35, height:35,}}
-                    source={require('../../assets/kisspng-air-force-sneakers-air-jordan-nike-shoe-force-vector-5ad96b1737c599.2356844015241981672285.png')}
+                    source={require('../../assets/drawn-airforce.png')}
                     />
                   </View>
                   <Text style= {[styles.catItem, catIndex == index && styles.cattextSelected,]} > {item.text} </Text>
@@ -57,11 +78,11 @@ const Home = ({ navigation }) => {
 
         <View style={{flex:1, marginTop:1, justifyContent:'space-between', alignItems:'center'}}>
           <FlatList
-            data={Products}
+            data={products}
             numColumns='2'
             showsVerticalScrollIndicator={false}
             renderItem={({ item }) => (
-              <HomeCaurd item={item} navigation={navigation} />
+              <HomeCard item={item} navigation={navigation} />
             )}
           />
         </View>

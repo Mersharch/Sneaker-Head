@@ -32,7 +32,7 @@ export const db = getFirestore(app);
 
 export const docs = getDocs(app);
 
-export const collection = collection(app);
+export const kollection = collection(app);
 
 
 export default app
