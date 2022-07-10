@@ -49,40 +49,40 @@ const ProdDetails = ({ navigation, route }) => {
 
             </View>
                 
-            <Image source={item.img[0]} style={styles.img} />
+            <Image source={{uri: item.ProductImages[0]}} style={styles.img} />
         </View>
 
         <View style={styles.aiv}>
             <View style={styles.tpView}>
                 <View>
-                    <Text style={styles.title}>{item.title}</Text>
-                    <Text style={styles.subTxt}>Nike Men's Basketball Shoes</Text>
+                    <Text style={styles.title}>{item.ProductName}</Text>
+                    <Text style={styles.subTxt}>{item.ProductSubText}</Text>
                 </View>
-                <Text style={styles.price}>{item.price}</Text>
+                <Text style={styles.price}>{item.ProductPrice}</Text>
             </View>
 
             <View style={{width:'100%', flexDirection:'row', justifyContent:'space-evenly', alignItems:'center',}}>
                 <TouchableOpacity style={styles.imgSubViewSelected}>
                     <View>
-                        <Image source={item.img[0]} style={styles.imgSub} />
+                        <Image source={{uri: item.ProductImages[0]}} style={styles.imgSub} />
                     </View>
                 </TouchableOpacity>
 
                 <TouchableOpacity style={styles.imgSubView}>
                     <View>
-                        <Image source={item.img[1]} style={styles.imgSub} />
+                        <Image source={{uri: item.ProductImages[1]}} style={styles.imgSub} />
                     </View>
                 </TouchableOpacity>
 
                 <TouchableOpacity style={styles.imgSubView}>
                     <View>
-                        <Image source={item.img[2]} style={styles.imgSub} />
+                        <Image source={{uri: item.ProductImages[2]}} style={styles.imgSub} />
                     </View>
                 </TouchableOpacity>
 
                 <TouchableOpacity style={styles.imgSubView}>
                     <View>
-                        <Image source={item.img[3]} style={styles.imgSub} />
+                        <Image source={{uri: item.ProductImages[3]}} style={styles.imgSub} />
                     </View>
                 </TouchableOpacity>
             </View>

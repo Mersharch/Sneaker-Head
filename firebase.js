@@ -2,7 +2,7 @@
 
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-import { getFirestore, getDocs, collection } from "firebase/firestore";
+import { getFirestore } from "firebase/firestore";
 
 
 // TODO: Replace the following with your app's Firebase project configuration
@@ -30,9 +30,4 @@ export const auth = getAuth(app);
 // Initialize Cloud Firestore and get a reference to the service
 export const db = getFirestore(app);
 
-export const docs = getDocs(app);
 
-export const kollection = collection(app);
-
-
-export default app

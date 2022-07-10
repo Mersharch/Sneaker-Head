@@ -5,7 +5,9 @@ import { Feather } from '@expo/vector-icons';
 import Hero from '../../components/Hero/Hero';
 import { categories} from '../../assets/data';
 import HomeCard from '../../components/Cards/HomeCard/HomeCard';
-import { db, docs, kollection } from "../../firebase";
+import { db } from "../../firebase";
+import { getDocs, collection } from "firebase/firestore";
+
 
 
 const Home = ({ navigation }) => {
@@ -15,8 +17,8 @@ const Home = ({ navigation }) => {
   
   const [loader, setLoader] = useState(true);
 
-  const getProducts = () => {
-    const querySnapshot = docs(kollection(db, "Products"));
+  const getProducts = async() => {
+    const querySnapshot = await getDocs(collection(db, "Products"));
       const items = []
       querySnapshot.forEach((doc) => {
       // doc.data() is never undefined for query doc snapshots
