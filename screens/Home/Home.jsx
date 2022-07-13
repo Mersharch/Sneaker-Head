@@ -36,7 +36,7 @@ const Home = ({ navigation }) => {
 
   return (
     <SafeAreaView style={styles.hContainer}>
-      {loader == true && <Text>Please wait...</Text>}
+      
       <View style={styles.topIcons}>
         <TouchableOpacity>
           <Feather name="align-left" size={30} color="black" />
@@ -77,16 +77,11 @@ const Home = ({ navigation }) => {
           <Text style={{fontSize:30,fontWeight:'600'}}>New Men's</Text>
           <Button title='See all'  color={'#A8D2DC'} />
         </View>
-
+        {loader == true && <Text>Please wait...</Text>}
         <View style={{flex:1, marginTop:1, justifyContent:'space-between', alignItems:'center'}}>
-          <FlatList
-            data={products}
-            numColumns='2'
-            showsVerticalScrollIndicator={false}
-            renderItem={({ item }) => (
+          {products.map(item => (
               <HomeCard item={item} navigation={navigation} />
-            )}
-          />
+          ))}
         </View>
 
       </ScrollView>

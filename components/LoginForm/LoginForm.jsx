@@ -54,7 +54,7 @@ const LoginForm = ({navigation}) => {
     if (valid) {
       SignIn();
 
-      navigation.navigate('Home');
+      navigation.navigate('HomeTabs');
     }
   }
 

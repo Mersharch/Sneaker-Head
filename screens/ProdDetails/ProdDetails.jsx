@@ -17,6 +17,8 @@ const ProdDetails = ({ navigation, route }) => {
 
     const [color, setColor] = useState('black');
 
+    const [imgIndex, setImgIndex] = useState(0);
+
     
     const wishClick = () => {
         if ( name  === 'hearto') {
@@ -49,7 +51,7 @@ const ProdDetails = ({ navigation, route }) => {
 
             </View>
                 
-            <Image source={{uri: item.ProductImages[0]}} style={styles.img} />
+            <Image source={{uri: item.ProductImages[imgIndex]}} style={styles.img} />
         </View>
 
         <View style={styles.aiv}>
@@ -62,25 +64,25 @@ const ProdDetails = ({ navigation, route }) => {
             </View>
 
             <View style={{width:'100%', flexDirection:'row', justifyContent:'space-evenly', alignItems:'center',}}>
-                <TouchableOpacity style={styles.imgSubViewSelected}>
+                <TouchableOpacity style={styles.imgSubViewSelected} onPress={()=> setImgIndex(0)}>
                     <View>
                         <Image source={{uri: item.ProductImages[0]}} style={styles.imgSub} />
                     </View>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.imgSubView}>
+                <TouchableOpacity style={styles.imgSubView} onPress={()=> setImgIndex(1)}>
                     <View>
                         <Image source={{uri: item.ProductImages[1]}} style={styles.imgSub} />
                     </View>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.imgSubView}>
+                <TouchableOpacity style={styles.imgSubView} onPress={()=> setImgIndex(2)}>
                     <View>
                         <Image source={{uri: item.ProductImages[2]}} style={styles.imgSub} />
                     </View>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.imgSubView}>
+                <TouchableOpacity style={styles.imgSubView} onPress={()=> setImgIndex(3)}>
                     <View>
                         <Image source={{uri: item.ProductImages[3]}} style={styles.imgSub} />
                     </View>

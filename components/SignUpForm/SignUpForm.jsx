@@ -26,7 +26,7 @@ const SignUpForm = ({navigation, person, setPerson }) => {
         // ...
       })
 
-      navigation.navigate('Home');
+      navigation.navigate('HomeTabs');
     })
     .catch((error) => {
       const errorCode = error.code;

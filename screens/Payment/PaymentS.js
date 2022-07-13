@@ -2,4 +2,4 @@ import { StyleSheet } from "react-native";
 
 
 
-export const styles = StyleSheet.create({first})
+export const styles = StyleSheet.create({})

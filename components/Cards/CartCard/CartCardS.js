@@ -36,7 +36,7 @@ export const styles = StyleSheet.create({
     end: {
         width:'60%',
         paddingLeft:20,
-        alignItems:'left',
+        alignItems:'flex-start',
         
 
     },

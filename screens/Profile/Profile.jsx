@@ -1,10 +1,12 @@
-import { SafeAreaView, View, Text, TouchableOpacity } from 'react-native'
+import { SafeAreaView, View, Text, TouchableOpacity, Alert } from 'react-native'
 import React from 'react'
 import { styles } from './ProfileS'
 import { AntDesign } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
+import { signOut } from 'firebase/auth';
+import { auth } from '../../firebase';
 
-const Profile = () => {
+const Profile = ({navigation}) => {
 
   const options = [
     {
@@ -35,7 +37,7 @@ const Profile = () => {
   ]
   return (
     <SafeAreaView>
-      <View style={{width:'100%',flexDirection:'row', alignItems:'center', justifyContent:'space-between', paddingHorizontal:20, }}>
+      <View style={{width:'100%',flexDirection:'row', alignItems:'center', justifyContent:'space-between', paddingHorizontal:20, marginTop:40 }}>
                 
         <TouchableOpacity onPress={()=> navigation.goBack()}>
             <AntDesign name='left' size={25} color={'#000000'} />
@@ -45,11 +47,11 @@ const Profile = () => {
           <Text>Settings</Text>
         </TouchableOpacity>
       </View>
-      <View>
+      <View style={styles.options}>
         {options.map(item => {
           return(
-            <TouchableOpacity>
-              <View>
+            <TouchableOpacity style={styles.option}>
+              <View style={styles.optionInner}>
               <MaterialIcons name={item.icon} size={24} color="#ff8727" />
                 <Text>{item.name}</Text>
               </View>
@@ -59,7 +61,15 @@ const Profile = () => {
         })}
       </View>
 
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => {
+        signOut(auth)
+        .then(()=>{
+          Alert.alert('LogOut', "LogOut")
+          navigation.navigate('Login')
+          }
+        )
+        .catch(err => Alert.alert("Error!", err))
+      }}>
         <Text>Log Out</Text>
       </TouchableOpacity>
     </SafeAreaView>
