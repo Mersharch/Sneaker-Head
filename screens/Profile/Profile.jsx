@@ -53,7 +53,7 @@ const Profile = ({navigation}) => {
             <TouchableOpacity style={styles.option}>
               <View style={styles.optionInner}>
               <MaterialIcons name={item.icon} size={24} color="#ff8727" />
-                <Text>{item.name}</Text>
+                <Text style={styles.optionText}>{item.name}</Text>
               </View>
               <AntDesign name='right' size={20} color={'#ff8727'} />
             </TouchableOpacity>
@@ -70,6 +70,7 @@ const Profile = ({navigation}) => {
         )
         .catch(err => Alert.alert("Error!", err))
       }}>
+        <MaterialIcons name="logout" size={24} color="black" />
         <Text>Log Out</Text>
       </TouchableOpacity>
     </SafeAreaView>

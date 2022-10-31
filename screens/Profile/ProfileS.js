@@ -18,4 +18,10 @@ export const styles = StyleSheet.create({
         flexDirection:'row',
         alignItems:'center',
     },
+
+    optionText: {
+        fontSize: 18,
+        fontWeight: '400',
+        marginLeft: 10,
+    },
 })

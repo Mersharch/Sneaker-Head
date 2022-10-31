@@ -68,5 +68,13 @@ export const styles = StyleSheet.create({
 
     dnhaa: {
       fontSize:16.5,
+      marginRight:5,
+    },
+
+    subtn : {
+      borderWidth: 0,
+      backgroundColor:'transparent',
+      color:'orange',
+      fontSize:16,
     },
   });

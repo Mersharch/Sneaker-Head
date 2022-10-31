@@ -84,6 +84,8 @@ const Home = ({ navigation }) => {
           ))}
         </View>
 
+        
+
       </ScrollView>
     </SafeAreaView>
   )

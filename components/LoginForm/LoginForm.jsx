@@ -1,6 +1,6 @@
 import { NavigationContainer } from '@react-navigation/native'
 import React, { useState } from 'react'
-import {View, Text, TextInput, TouchableOpacity, Button, Keyboard, Alert} from 'react-native'
+import {View, Text, TextInput, TouchableOpacity, Button, Keyboard, Alert, Pressable} from 'react-native'
 import { styles } from './LoginFormS'
 import { auth } from "../../firebase";
 import { signInWithEmailAndPassword } from 'firebase/auth';
@@ -18,6 +18,7 @@ const LoginForm = ({navigation}) => {
     // Signed in 
     const user = userCredential.user;
     console.log(user)
+    navigation.navigate('HomeTabs');
     // ...
   })
   .catch((error) => {
@@ -25,6 +26,7 @@ const LoginForm = ({navigation}) => {
     const errorMessage = error.message;
 
     console.log(`${errorCode} error: ${errorMessage}`);
+    Alert.alert('Incorrect Credentials or Network Error')
 
   });
   }
@@ -53,8 +55,6 @@ const LoginForm = ({navigation}) => {
 
     if (valid) {
       SignIn();
-
-      navigation.navigate('HomeTabs');
     }
   }
 
@@ -82,10 +82,7 @@ const LoginForm = ({navigation}) => {
             <Text style={styles.btnT}>Log In</Text>
           </TouchableOpacity>
 
-          <View style={styles.btmText}>
-            <Text style={styles.dnhaa}>Do not have an account?</Text>
-            <Button title='Sign Up' color='orange' />
-          </View>
+         
 
       </View>
   )
